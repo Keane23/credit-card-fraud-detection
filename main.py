@@ -52,3 +52,7 @@ def boxplots_custom(dataset, columns_list, rows, cols, title):
 boxplots_custom(dataset=dataset, columns_list=dataset.columns, rows=6, cols=3, title='Boxplots for all variables in dataset')
 plt.tight_layout(pad=1.0)
 plt.show()
+
+# create pairwise plots of non-categorical data from check function
+sns.pairplot(data=dataset[['CustomerID', 'A2', 'A3', 'A7', 'A10', 'A13', 'A14', 'Class']], hue='Class', height=1.5)
+plt.show()
