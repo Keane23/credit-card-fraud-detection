@@ -41,7 +41,7 @@ print('Average Amount in a Fraudulent Transaction: ' + str(dataset[dataset['Clas
 print('Average Amount in a Valid Transaction: ' + str(dataset[dataset['Class'] == 0]['Amount'].mean()))
 
 def displots_custom_class(dataset, variable):
-    '''Display custom displots'''
+    '''Display custom displots, where blue is valid, orange is fraudulent'''
 
     ax = plt.subplot()
     sns.kdeplot(dataset[variable][dataset.Class == 0], fill=True, ax=ax)
@@ -52,3 +52,9 @@ def displots_custom_class(dataset, variable):
     plt.show()
 
 displots_custom_class(dataset, 'Time')
+displots_custom_class(dataset, 'Amount')
+
+# displots for all variables showing fraudulent and valid transactions
+columns = dataset.iloc[:,1:29].columns
+for col in columns:
+    displots_custom_class(dataset, col)
