@@ -38,3 +38,19 @@ print('Valid Transactions: ' + str(valid))
 print('Proportion of Fraudulent Cases: ' + str(fraud/dataset.shape[0]))
 print('Non-Missing Values: ' + str(dataset.isnull().shape[0]))
 print('Missing Values: ' + str(dataset.shape[0] - dataset.isnull().shape[0]))
+
+def displots_custom(list, suptitle):
+    '''Display custom displots'''
+
+    fig, axes = plt.subplots(1, 2, figsize=(15,7))
+
+    for i, data in enumerate(list):
+        sns.kdeplot(data, color='m', fill=True, ax=axes[i]).set_title(suptitle[i])
+
+    plt.tight_layout()
+    plt.show()
+
+# shows data spread of two named values
+amount_value = dataset['Amount'].values
+time_value = dataset['Time'].values
+displots_custom([amount_value, time_value], ['Distribution of Amount', 'Distribution of Time'])
