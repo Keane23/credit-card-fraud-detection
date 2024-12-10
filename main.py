@@ -74,10 +74,12 @@ x = dataset.iloc[:,0:30]
 x_train, x_test, y_train, y_test = train_test_split( 
         x, y, test_size = 0.2, random_state = 42)
 
+# random forest classifier model
 rfc = RandomForestClassifier() 
 rfc.fit(x_train, y_train) 
 y_pred = rfc.predict(x_test)
 
+# checking model's accuracy, precision, recall, and f1 score
 print('Accuracy Score:', accuracy_score(y_test, y_pred)) 
 print('Precision Score:', precision_score(y_test, y_pred))
 print('Recall Score:', recall_score(y_test, y_pred))
