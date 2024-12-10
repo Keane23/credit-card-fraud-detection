@@ -37,7 +37,7 @@ print('Fraudulent Transactions: ' + str(fraud))
 print('Valid Transactions: ' + str(valid))
 print('Proportion of Fraudulent Cases: ' + str(fraud/dataset.shape[0]))
 print('Non-Missing Values: ' + str(dataset.isnull().shape[0]))
-print('Missing Values: ' + str(dataset.shape[0] - dataset.isnull().shape[0]))
+print('Missing Values: ' + str(dataset.shape[0] - dataset.isnull().shape[0]) + '\n')
 
 def displots_custom(list, suptitle):
     '''Display custom displots'''
@@ -54,3 +54,7 @@ def displots_custom(list, suptitle):
 amount_value = dataset['Amount'].values
 time_value = dataset['Time'].values
 displots_custom([amount_value, time_value], ['Distribution of Amount', 'Distribution of Time'])
+
+# checks to see any notable differences in valid and fraudulent
+print('Average Amount in a Fraudulent Transaction: ' + str(dataset[dataset['Class'] == 1]['Amount'].mean()))
+print('Average Amount in a Valid Transaction: ' + str(dataset[dataset['Class'] == 0]['Amount'].mean()))
